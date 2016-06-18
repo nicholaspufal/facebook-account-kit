@@ -1,6 +1,8 @@
 # Facebook::AccountKit
 
-This gem aims to facilitate the communication with Facebook's Account Kit. It implements the **server** steps described in the [official docs](https://developers.facebook.com/docs/accountkit/web).
+This gem aims to facilitate the communication with Facebook's Account Kit. It implements the **server side** described in the [official docs](https://developers.facebook.com/docs/accountkit/web).
+
+As of now it's assuming you have enabled `Require app secret` in your Account Kit page.
 
 It only uses the core modules available as part of Ruby (so nothing too crazy in here 😬...)
 
@@ -34,16 +36,17 @@ Somewhere in your application (probably as part of a new `initializer`) you shou
 
 All of that information you can find as part of your Facebook app's `dashboard` and `account kit` pages.
 
-The process of communicating with Facebook is split into two steps.
+The process of communicating with Facebook is divided into two steps.
 
-During the first one you will use the `code` that the client provided you to request for an `access_token`:
+During the first one you will use the `code` (AKA `authorization code`) that the client provided in exchange for an `access_token`:
 
 ```ruby
-  token_exchanger = Facebook::AccountKit::TokenExchanger.new(params[:code])
+  client_code = params[:code] # this depends on how your controller was implemented
+  token_exchanger = Facebook::AccountKit::TokenExchanger.new(client_code)
   access_token = token_exchanger.fetch_access_token
 ```
 
-...and with that token you can request for the user information:
+...and with that access token you can request for the user information:
 
 ```ruby
   user = Facebook::AccountKit::UserAccount.new(access_token)
