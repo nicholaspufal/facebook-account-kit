@@ -27,6 +27,8 @@ Or install it yourself as:
 Somewhere in your application (probably as part of a new `initializer`) you should add the following:
 
 ```ruby
+  require 'facebook/account_kit'
+
   Facebook::AccountKit.config do |c|
     c.account_kit_version = 'v1.0' # or any other valid account kit api version
     c.account_kit_app_secret = 'your account kit secret'
