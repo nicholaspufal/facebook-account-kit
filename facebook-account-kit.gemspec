@@ -11,12 +11,13 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "A simple Ruby gem that makes it easier to work with Facebook's Account Kit"
   spec.homepage      = 'https://github.com/nicholaspufal/facebook-account-kit'
+  spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'bundler', '~> 1.12'
-  spec.add_development_dependency 'rspec', '~> 3.4.0'
-  spec.add_development_dependency 'vcr', '~> 3.0.3'
-  spec.add_development_dependency 'webmock', '~> 2.1.0'
+  spec.add_development_dependency 'rspec', '~> 3.4'
+  spec.add_development_dependency 'vcr', '~> 3.0'
+  spec.add_development_dependency 'webmock', '~> 2.1'
 end
