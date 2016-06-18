@@ -1,36 +1,64 @@
 # Facebook::AccountKit
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/facebook/accountkit`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem aims to facilitate the communication with Facebook's Account Kit. It implements the **server** steps described in the [official docs](https://developers.facebook.com/docs/accountkit/web).
 
-TODO: Delete this and the text above, and describe your gem
+It only uses the core modules available as part of Ruby (so nothing too crazy in here 😬...)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'facebook-accountkit'
+gem 'facebook-account-kit'
 ```
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
-    $ gem install facebook-accountkit
+    $ gem install facebook-account-kit
 
 ## Usage
 
-TODO: Write usage instructions here
+Somewhere in your application (probably as part of a new `initializer`) you should add the following:
+
+```ruby
+  Facebook::AccountKit.config do |c|
+    c.account_kit_version = 'v1.0' # or any other valid account kit api version
+    c.account_kit_app_secret = 'your account kit secret'
+    c.facebook_app_id = 'your facebook app id'
+  end
+```
+
+All of that information you can find as part of your Facebook app's `dashboard` and `account kit` pages.
+
+The process of communicating with Facebook is split into two steps.
+
+During the first one you will use the `code` that the client provided you to request for an `access_token`:
+
+```ruby
+  token_exchanger = Facebook::AccountKit::TokenExchanger.new(params[:code])
+  access_token = token_exchanger.fetch_access_token
+```
+
+...and with that token you can request for the user information:
+
+```ruby
+  user = Facebook::AccountKit::UserAccount.new(access_token)
+  user.fetch_user_info
+```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+There are different targets in the Makefile to help you to run the tests:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+* Run all tests: `make test`
+* Run unit tests: `make test.unit`
+* Run integration tests: `make test.integration`
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/facebook-accountkit.
+Bug reports and pull requests are welcome on GitHub at https://github.com/nicholaspufal/facebook-account-kit
 
