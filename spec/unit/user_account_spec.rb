@@ -5,7 +5,7 @@ module Facebook
 
       context 'success' do
         it 'returns the user phone number' do
-          expected_uri = URI('https://graph.accountkit.com/v1.0/me?access_token=12345&appsecret_proof=7400752f0f61d0f6faf4150f7c7d4d0ecddaac84279e9e9de747ef9048099af8')
+          expected_uri = URI('https://graph.accountkit.com/v1.0/me?access_token=12345&appsecret_proof=f33504f20f01865663144455838c35853730928cce84c16952da6a4e8ae3cde3')
           fake_body = { 'phone' => { 'number' => '+15559999' } }
           mocked_response = double('fake response',
                                    body: JSON.dump(fake_body),

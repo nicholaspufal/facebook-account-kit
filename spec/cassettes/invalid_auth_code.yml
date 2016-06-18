@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://graph.accountkit.com/v1.0/access_token?access_token=AA%7C1168173003250539%7C9bdc9ae47c4211b9919a036c1e1bc477&code=invalid%20code&grant_type=authorization_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - graph.accountkit.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Www-Authenticate:
+      - OAuth "Facebook Platform" "invalid_request" "Invalid verification code"
+      Emerson-Api-Version:
+      - v1.0
+      Access-Control-Allow-Origin:
+      - "*"
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Fb-Trace-Id:
+      - FNXWBWxiz3p
+      X-Fb-Rev:
+      - '2400666'
+      X-Fb-Debug:
+      - 1iaXvEQ9dyFonjedst/BKZzoh4r1vTIoqREv91TK38LnFMhie+K67cwJlfiGOU1xTwRvW3A0su3cKOfyhB5e/w==
+      Date:
+      - Sat, 18 Jun 2016 16:50:58 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '109'
+    body:
+      encoding: UTF-8
+      string: '{"error":{"message":"Invalid verification code","type":"OAuthException","code":1,"fbtrace_id":"FNXWBWxiz3p"}}'
+    http_version: 
+  recorded_at: Sat, 18 Jun 2016 16:50:58 GMT
+recorded_with: VCR 3.0.3

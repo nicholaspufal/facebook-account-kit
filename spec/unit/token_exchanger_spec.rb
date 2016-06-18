@@ -5,7 +5,7 @@ module Facebook
 
       context 'success' do
         it 'exchanges a token' do
-          expected_uri = URI('https://graph.accountkit.com/v1.0/access_token?grant_type=authorization_code&code=12345&access_token=AA%7Crandom_id%7Crandom_secret')
+          expected_uri = URI('https://graph.accountkit.com/v1.0/access_token?grant_type=authorization_code&code=12345&access_token=AA%7C1168173003250539%7C9bdc9ae47c4211b9919a036c1e1bc477')
           fake_body = { 'access_token' => '12345' }
           mocked_response = double('fake response',
                                    body: JSON.dump(fake_body),

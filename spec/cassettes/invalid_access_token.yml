@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://graph.accountkit.com/v1.0/me?access_token=invalid%20access%20token&appsecret_proof=dcca0fde4790f53de526ea8d25c7f8ddbb2616f0d9cb03abc05ba4f144b2d665
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - graph.accountkit.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Www-Authenticate:
+      - OAuth "Facebook Platform" "invalid_token" "Invalid OAuth access token."
+      Access-Control-Allow-Origin:
+      - "*"
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Fb-Trace-Id:
+      - BYm7Op6reiZ
+      X-Fb-Rev:
+      - '2400666'
+      X-Fb-Debug:
+      - VxAJTux7n0TUDSIbUtKx6ekgMwG8gob1GKCtXOeuFXeycjIdDgdBQX9XPDR/TBDEcfZ7mLkOKo221TwW2pI5Lg==
+      Date:
+      - Sat, 18 Jun 2016 16:50:58 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '113'
+    body:
+      encoding: UTF-8
+      string: '{"error":{"message":"Invalid OAuth access token.","type":"OAuthException","code":190,"fbtrace_id":"BYm7Op6reiZ"}}'
+    http_version: 
+  recorded_at: Sat, 18 Jun 2016 16:50:58 GMT
+recorded_with: VCR 3.0.3
