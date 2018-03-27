@@ -9,7 +9,7 @@ module Facebook
       end
 
       def fetch_user_info
-        HTTP.get compose_url
+        HashWithIndifferentAccess.new(HTTP.get(compose_url))
       end
 
       private
